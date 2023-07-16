@@ -5,7 +5,7 @@ int main()
     setup();
     while (!gameOver)
     {
-        Sleep(100);
+        Sleep(300);
         draw();
         input();
         logic();
