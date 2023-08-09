@@ -167,7 +167,6 @@ void logic()
 
 void ScoreOut()
 {
-    using namespace std;
     string fname = "ScoreList.txt";
     fstream file;
 
