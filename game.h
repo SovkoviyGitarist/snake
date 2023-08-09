@@ -7,7 +7,8 @@
 #include <fstream>
 #include <conio.h>
 #include <Windows.h>
-
+#include <vector>
+#include <algorithm>
 
 extern bool gameOver;
 const int width{ 50 };

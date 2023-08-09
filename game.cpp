@@ -178,7 +178,7 @@ void ScoreOut()
     }
     try
     {
-        file << to_string(score) << "\n";
+        file << score << "\n";
     }
     catch (const std::exception& ex)
     {
@@ -195,14 +195,24 @@ void ScoreOut()
     }
     try
     {
-
+        vector<string> scoreVec;
 
         string text;
-        cout << "Last Scores: \n";
+        
         while (!file.eof())
         {
             getline(file, text);
-            cout <<text << endl;
+            scoreVec.push_back(text);
+        }
+        
+        sort(scoreVec.begin(), scoreVec.end(), greater<string>());
+        auto last = unique(scoreVec.begin(), scoreVec.end());
+        scoreVec.erase(last, scoreVec.end());
+
+        cout << "Top 3 Scores: \n";
+        for (int i = 0; i < 3; i++)
+        {
+            cout << scoreVec[i] << endl;
         }
 
         file.close();
