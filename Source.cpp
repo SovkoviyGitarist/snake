@@ -10,5 +10,6 @@ int main()
         input();
         logic();
     }
+    ScoreOut();
     return 0;
 }

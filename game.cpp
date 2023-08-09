@@ -163,3 +163,63 @@ void logic()
         nTail++;
     }
 }
+
+
+void ScoreOut()
+{
+    using namespace std;
+    string fname = "ScoreList.txt";
+    fstream file;
+
+    file.open(fname,fstream::out | fstream::app);
+    if (!file)
+    {
+        throw runtime_error("failed");
+    }
+    try
+    {
+        file << score << "\n";
+    }
+    catch (const std::exception& ex)
+    {
+        cout << ex.what();
+    }
+    
+    file.close();
+
+
+    file.open(fname, fstream::in);
+    if (!file)
+    {
+        throw runtime_error("failed");
+    }
+    try
+    {
+        vector<string> scoreVec;
+
+        string text;
+        
+        while (!file.eof())
+        {
+            getline(file, text);
+            scoreVec.push_back(text);
+        }
+        
+        sort(scoreVec.begin(), scoreVec.end(), greater<string>());
+        auto last = unique(scoreVec.begin(), scoreVec.end());
+        scoreVec.erase(last, scoreVec.end());
+
+        cout << "Top 3 Scores: \n";
+        for (int i = 0; i < 3; i++)
+        {
+            cout << scoreVec[i] << endl;
+        }
+
+        file.close();
+    }
+
+    catch (const std::exception& ex)
+    {
+        cout << ex.what();
+    }
+}
