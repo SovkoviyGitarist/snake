@@ -2,10 +2,12 @@
 #define GAME_H
 
 #include <iostream>
+#include <stdexcept>
+#include <string>
+#include <fstream>
 #include <conio.h>
 #include <Windows.h>
-#include <thread>
-#include <chrono>
+
 
 extern bool gameOver;
 const int width{ 50 };
@@ -29,6 +31,6 @@ void setup();
 void draw();
 void input();
 void logic();
-
+void ScoreOut();
 
 #endif // GAME_H
